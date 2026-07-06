@@ -1,4 +1,4 @@
-package com.Book.Explorer.Book.Explorer;
+package com.bookexplorer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
