@@ -1,5 +1,8 @@
 package com.bookexplorer.dto;
 
+import lombok.Builder;
+
+@Builder
 public class UserResponse {
 
     private Long id;

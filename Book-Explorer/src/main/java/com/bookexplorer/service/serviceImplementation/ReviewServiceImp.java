@@ -2,6 +2,7 @@ package com.bookexplorer.service.serviceImplementation;
 
 import com.bookexplorer.dto.ReviewRequest;
 import com.bookexplorer.dto.ReviewResponse;
+import com.bookexplorer.repository.ReviewRepository;
 import com.bookexplorer.service.ReviewService;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +10,12 @@ import java.util.List;
 
 @Service
 public class ReviewServiceImp  implements ReviewService {
+
+    private final ReviewRepository reviewRepository;
+
+    public ReviewServiceImp(ReviewRepository reviewRepository) {
+        this.reviewRepository = reviewRepository;
+    }
 
     @Override
     public ReviewResponse addReview(Long userId, Long bookId, ReviewRequest request) {

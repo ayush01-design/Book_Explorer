@@ -1,6 +1,7 @@
 package com.bookexplorer.service.serviceImplementation;
 
 import com.bookexplorer.dto.BookResponse;
+import com.bookexplorer.repository.FavouriteRepository;
 import com.bookexplorer.service.FavouriteService;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +9,13 @@ import java.util.List;
 
 @Service
 public class FavouriteServiceImp implements FavouriteService {
+
+    private final FavouriteRepository favouriteRepository;
+
+    public FavouriteServiceImp(FavouriteRepository favouriteRepository) {
+        this.favouriteRepository = favouriteRepository;
+    }
+
     @Override
     public void addFavourite(Long userId, Long bookId) {
 

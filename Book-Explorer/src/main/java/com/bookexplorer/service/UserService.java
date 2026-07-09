@@ -13,5 +13,7 @@ public interface UserService {
 
     UserResponse getUserById(Long id);
 
+    UserResponse registerUser(RegisterRequest request);
+
 
 }
