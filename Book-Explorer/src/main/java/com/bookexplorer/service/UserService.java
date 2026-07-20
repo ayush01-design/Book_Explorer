@@ -5,7 +5,7 @@ import com.bookexplorer.dto.LoginRequest;
 import com.bookexplorer.dto.RegisterRequest;
 import com.bookexplorer.dto.UserResponse;
 
-public interface UserService {
+public interface   UserService {
 
     AuthResponse register(RegisterRequest request);
 
