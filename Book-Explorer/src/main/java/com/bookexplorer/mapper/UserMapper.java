@@ -17,6 +17,7 @@ public class UserMapper {
         user.setPassword(request.getPassword());
 
         return user;
+
     }
 
     public static UserResponse toResponse(User user) {

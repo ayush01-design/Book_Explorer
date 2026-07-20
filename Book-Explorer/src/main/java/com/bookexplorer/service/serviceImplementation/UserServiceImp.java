@@ -35,6 +35,13 @@ public class UserServiceImp implements UserService {
 
     }
 
+    @Override
+    public UserResponse getUserById(Long id) {
+        User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+
+        return userMapper.toResponse(user);
+    }
+
 
     @Override
     public AuthResponse register(RegisterRequest request) {
@@ -46,8 +53,4 @@ public class UserServiceImp implements UserService {
         return null;
     }
 
-    @Override
-    public UserResponse getUserById(Long id) {
-        return null;
-    }
 }
