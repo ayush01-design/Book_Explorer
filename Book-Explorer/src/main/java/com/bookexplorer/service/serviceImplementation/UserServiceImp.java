@@ -12,6 +12,8 @@ import com.bookexplorer.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserServiceImp implements UserService {
@@ -40,6 +42,43 @@ public class UserServiceImp implements UserService {
         User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
 
         return userMapper.toResponse(user);
+    }
+
+    @Override
+    public List<UserResponse> getAllUsers() {
+        return userRepository.findAll()
+                .stream()
+                .map(userMapper::toResponse)
+                .toList();
+    }
+
+    @Override
+    public UserResponse updateUser(Long id, RegisterRequest request) {
+
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (!user.getEmail().equals(request.getEmail())
+                && userRepository.existsByEmail(request.getEmail())) {
+            throw new RuntimeException("Email already exists");
+        }
+
+        user.setName(request.getName());
+        user.setEmail(request.getEmail());
+        user.setPassword(request.getPassword());
+
+        User updatedUser = userRepository.save(user);
+
+        return userMapper.toResponse(updatedUser);
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        userRepository.delete(user);
     }
 
 

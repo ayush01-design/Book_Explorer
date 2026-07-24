@@ -20,7 +20,7 @@ public class UserMapper {
 
     }
 
-    public static UserResponse toResponse(User user) {
+    public UserResponse toResponse(User user) {
 
         return UserResponse.builder()
                 .id(user.getId())
