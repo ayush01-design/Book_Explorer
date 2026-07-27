@@ -1,9 +1,23 @@
 type Query {
     getAllUsers: [User]
+    getUserById(id: ID!): User
+
 }
 
 type User {
     id: ID
     name: String
     email: String
+}
+
+type Mutation {
+    registerUser(request: UserInput!): User
+    updateUser(id: ID!, request: UserInput!): User
+    deleteUser(id: ID!): String
+}
+
+input UserInput {
+    name: String!
+    email: String!
+    password: String!
 }
